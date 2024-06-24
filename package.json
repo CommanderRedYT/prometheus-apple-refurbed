@@ -1,6 +1,9 @@
 {
   "name": "prometheus-apple-refurbed",
   "type": "module",
+  "bin": {
+    "prometheus-apple-refurbed": "./index.js"
+  },
   "scripts": {
     "dev": "nodemon index.js"
   },
