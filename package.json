@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CommanderRedYT/prometheus-apple-refurbed.git"
+  },
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsdom": "^24.1.0",
+    "prom-client": "^15.1.2",
+    "user-agents": "^1.1.245"
+  }
+}
