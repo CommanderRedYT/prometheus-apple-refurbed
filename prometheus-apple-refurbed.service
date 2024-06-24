@@ -1,0 +1,19 @@
+[Unit]
+Description=A simple prometheus scraper written in NodeJS to scrape apples refurbed products
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=prometheus_apple_refurbed
+Group=prometheus_apple_refurbed
+EnvironmentFile=-/etc/conf.d/prometheus-apple-refurbed
+ExecStart=/usr/bin/prometheus-apple-refurbed
+ExecReload=/bin/kill -HUP $MAINPID
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+SyslogIdentifier=prometheus-apple-refurbed
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

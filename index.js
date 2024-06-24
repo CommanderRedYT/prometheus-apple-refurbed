@@ -12,7 +12,16 @@ dotenv.config();
 const {
     CONFIG_COUNTRY = 'at',
     CONFIG_DEVICE = 'mac',
+    LISTEN_ADDRESS = '0.0.0.0',
+    LISTEN_PORT = '9567',
+    DEBUG = 'false',
 } = process.env;
+
+const ENABLE_DEBUG = DEBUG === 'true';
+
+if (!ENABLE_DEBUG) {
+    console.log = () => {}
+}
 
 const getURL = (country, device) => `https://www.apple.com/${country}/shop/refurbished/${device}`;
 
@@ -39,7 +48,9 @@ const extractData = async (url) => {
     }
 };
 
-promClient.collectDefaultMetrics();
+promClient.collectDefaultMetrics({
+    register: registry,
+});
 
 promClient.register.setDefaultLabels({
     app: 'apple-refurbished',
@@ -143,6 +154,6 @@ app.get('/raw', async (req, res) => {
     res.json(data);
 });
 
-app.listen(3000, () => {
-    console.log('Server listening on port 3000');
+app.listen(LISTEN_PORT, LISTEN_ADDRESS, () => {
+    console.info(`Listening on http://${LISTEN_ADDRESS}:${LISTEN_PORT}`);
 });
