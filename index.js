@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { JSDOM } from 'jsdom';
 import * as promClient from 'prom-client';
 import dotenv from 'dotenv';
